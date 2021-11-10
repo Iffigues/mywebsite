@@ -1,8 +1,8 @@
-package main
+package linuxtool
 
 func MakeFortune() (a Bash) {
 	a.Bash = "/usr/games/fortune"
-	a.Arg = true
+	a.Arg = false
 	e := []How{
 		How{"-a", 0},
 		How{"-c", 0},

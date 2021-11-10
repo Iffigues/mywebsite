@@ -1,7 +1,6 @@
-package main
+package linuxtool
 
 import (
-	"fmt"
 	"errors"
 	"bytes"
 	"os/exec"
@@ -27,6 +26,7 @@ type Bash struct {
 	Arg  bool
 	Com  []How
 	Args []string
+	Obl []string
 }
 
 type Commande struct {
@@ -43,7 +43,26 @@ func NewCommand() (r *Commande){
 func (r *Commande) Make(a string, b []Haha, c []string) (m *Mimi, err error){
 	if val, ok := r.Co[a]; ok {
 		m = &Mimi{}
+		if val.Arg  && c == nil {
+			return
+		}
+		for _, val := range val.Obl {
+			m.Opt =  append(m.Opt, val)
+		}
 		m.Com = val.Bash
+		for _, vali := range b {
+			for _, k := range val.Com {
+				if k.A == vali.B && k.B == len(vali.C) {
+					m.Opt = append(m.Opt, vali.B)
+					for _, rt := range vali.C {
+						m.Opt = append(m.Opt, rt)
+					}
+				}
+			}
+		}
+		for _, val := range c {
+			m.Opt = append(m.Opt, val)
+		}
 		return m, nil
 
 	}
@@ -59,11 +78,4 @@ func (r *Commande) Exec(m *Mimi) (out, er bytes.Buffer, err error) {
 		return out, er, err
 	}
 	return
-}
-
-func main() {
-	e := NewCommand()
-	ee , _:= e.Make("fortune", nil, nil)
-	u, uu, _ := e.Exec(ee)
-	fmt.Println(u.String(), uu.String())
 }
