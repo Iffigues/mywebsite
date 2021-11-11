@@ -2,7 +2,7 @@ package types
 
 import (
 	"polaroid/config"
-	"polaroid/pk"
+	//"polaroid/pk"
 
 	"github.com/gorilla/sessions"
 )
@@ -10,5 +10,5 @@ import (
 type Data struct {
 	Store *sessions.CookieStore
 	Conf  config.Config
-	Db    *pk.Pk
+	//Db    *pk.Pk
 }

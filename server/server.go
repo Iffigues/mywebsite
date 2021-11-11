@@ -4,12 +4,12 @@ import (
 	"net/http"
 	"os"
 	"polaroid/config"
-	"polaroid/pk"
 	"strings"
 
 	"polaroid/types"
 	"polaroid/linuxtool"
-
+	
+	"github.com/GeertJohan/go.rice"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 )
@@ -22,7 +22,7 @@ type Server struct {
 	Router *mux.Router
 	Data   *types.Data
 	Handle map[string]*Handle
-	Linux *LinuxTool.Command
+	Linux *linuxtool.Commande
 	Give   []HH
 }
 
@@ -48,11 +48,12 @@ func (s *Server) StartHH() {
 func NewServer(conf config.Config) *Server {
 	router := mux.NewRouter()
 	router.StrictSlash(true)
+	router.PathPrefix("/").Handler(http.FileServer(rice.MustFindBox("website").HTTPBox()))
 	return &Server{
 		Data: &types.Data{
 			Store: sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY"))),
 			Conf:  conf,
-			Db:    pk.NewPk(conf["pk"]),
+			//Db:    pk.NewPk(conf["pk"]),
 		},
 		Router: router,
 		Handle: make(map[string]*Handle),

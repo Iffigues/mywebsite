@@ -3,6 +3,7 @@ module polaroid
 go 1.17
 
 require (
+	github.com/GeertJohan/go.rice v1.0.2
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1
 	github.com/lib/pq v1.10.4
@@ -10,6 +11,7 @@ require (
 )
 
 require (
+	github.com/daaku/go.zipexe v1.0.0 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/securecookie v1.1.1 // indirect
