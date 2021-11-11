@@ -37,7 +37,11 @@ func NewCommand() (r *Commande){
 	r = &Commande{}
 	r.Co = make(map[string]Bash)
 	r.Co["fortune"] = MakeFortune()
-	return
+	r.Co["figlet"] = MakeFiglet()
+	r.Co["toilet"] = MakeToilet()
+	r.Co["cowsay"] = MakeCowsay()
+	r.Co["cowthink"] = MakeCowthink()
+return
 }
 
 func (r *Commande) Make(a string, b []Haha, c []string) (m *Mimi, err error){
