@@ -2,84 +2,44 @@
     <!doctype html>
 <html lang="fr">
 	<head>
-		<meta charset="utf-8">
 		<meta name="theme-color" content="#ffffff">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<title>{{println .Title}}</title>
-		<link rel="stylesheet" type="text/css" href="http://gopiko.fr:3006/public/css/style.css">
-		{{range $key, $value := .CSS}}
-			<link rel="stylesheet" type="text/css" href="{{$value}}">
-		{{end}}
-		<style>
-			html {
- 				 height: 100%;
-			}
-			body {
-				min-height: 100%;
-				margin: 0;
-				padding: 0;
-			}
-			.boutonmenuprincipal {
-				background-color: #e83737;
-				color: white;
-				border: none;
-				cursor: pointer;
-				font-size: 30px;
-			}
-			.boutonmenuprincipal:hover {
-				background-color: #ff4444;
-			}
-			.dropdown {
-				position: relative;
-				display: inline-block;
-			}
-			.dropdown-child {
-				display: none;
-				background-color: #f28c8c;
-				min-width: 50px;
-			}
-			.dropdown-child a {
-				color: white;
-				padding: 20px;
-				text-decoration: none;
-				display: block;
-			}
-			.dropdown:hover .dropdown-child {
-				display: block;
-			}
-		</style>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<header>
-			<div class="dropdown">
-				<button class="boutonmenuprincipal">Menu principal</button>
-				<div class="dropdown-child">
-					<a href="http://www.votresite.com/page1.html">Menu enfant 1</a>
-					<a href="http://www.votresite.com/page2.html">Menu enfant 2</a>
-					<a href="http://www.votresite.com/page3.html">Menu enfant 3</a>
-					<a href="http://www.votresite.com/page4.html">Menu enfant 4</a>
-					<a href="http://www.votresite.com/page5.html">Menu enfant 5</a>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Logo</a>
+    				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Fortune</a></li>
+								<li><a class="dropdown-item" href="#">Toilet</a></li>
+								<li><a class="dropdown-item" href="#">Figlet</a></li>
+								<li><a class="dropdown-item" href="#">Cowsay</a></li>
+								<li><a class="dropdown-item" href="#">rig</a></li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<div class="i">
-				<a  class="">Link 1</a>
-      				<a  class="">Link 2</a>
-      				<a  class="">Link 3</a>
-			</div>
-			{{ if eq .Role 1 }}
-			<div class="he">
-				<a href="/signup" class="he">Sign Up</a>
-      				<a class="he" href="/signin">Sign In</a>
-			</div>
-			{{else}}
-			<div class="he">
-				<a href="/account" class="">account</a>
-				<a class="" href="/signout">Sign Out</a>
-			</div>
-			{{end}}
-		</header>
+		</nav>
 		<div id="root" class="d-flex flex-column">
 		{{template "body" .}}
 		</div>
