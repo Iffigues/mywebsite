@@ -8,8 +8,7 @@ import (
 
 	"polaroid/types"
 	"polaroid/linuxtool"
-	
-	"github.com/GeertJohan/go.rice"
+
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 )
@@ -48,7 +47,7 @@ func (s *Server) StartHH() {
 func NewServer(conf config.Config) *Server {
 	router := mux.NewRouter()
 	router.StrictSlash(true)
-	router.PathPrefix("/").Handler(http.FileServer(rice.MustFindBox("website").HTTPBox()))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	return &Server{
 		Data: &types.Data{
 			Store: sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY"))),
