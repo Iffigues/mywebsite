@@ -41,7 +41,8 @@ func NewCommand() (r *Commande){
 	r.Co["toilet"] = MakeToilet()
 	r.Co["cowsay"] = MakeCowsay()
 	r.Co["cowthink"] = MakeCowthink()
-return
+	r.Co["rig"] = MakeRig()
+	return
 }
 
 func (r *Commande) Make(a string, b []Haha, c []string) (m *Mimi, err error){
