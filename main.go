@@ -7,6 +7,7 @@ import (
 	"polaroid/connect"
 	"polaroid/config"
 	"polaroid/server"
+	"polaroid/lw"
 )
 
 func main() {
@@ -19,6 +20,8 @@ func main() {
 	srv.AddHH(adm)
 	usr := user.NewUser(srv.Data)
 	srv.AddHH(usr)
+	llw := lw.NewLw(srv.Data)
+	srv.AddHH(llw)
 	connect := connect.NewConnect(srv.Data);
 	srv.AddHH(connect);
 	serve := srv.Servers(conf)

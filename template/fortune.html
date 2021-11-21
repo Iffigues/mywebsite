@@ -1,4 +1,66 @@
 {{define "body"}}
-<pre id="linux">
+<pre class="mt-4 p-5 bg-dark text-white rounded">
+{{.Data.Fortune}}
 </pre>
+<form method="post" action="/fortune">
+	<div>
+	   <input type="checkbox" id="-a" name="-a" value="-a">
+ 	   <label for="-a">-a</label>
+ 	 </div>
+	 <div>
+	   <input type="checkbox" id="-c" name="-c" value="-c">
+ 	   <label for="-c">-c</label>
+ 	 </div>
+	<div>
+	   <input type="checkbox" id="-e" name="-e" value="-e">
+ 	   <label for="-e">-e</label>
+ 	 </div>
+	<div>
+	   <input type="checkbox" id="-f" name="-f" value="-f">
+ 	   <label for="-f">-f</label>
+ 	</div>
+	<div>
+	   <input type="checkbox" id="-l" name="-l" value="-l">
+ 	   <label for="-l">-l</label>
+ 	</div>
+	<div>
+		<input type="checkbox" id="-o" name="-o" value="-o">
+ 	   <label for="-o">-o</label>
+ 	 </div>
+	 <div>
+	 	<input type="checkbox" id="-i" name="-i" value="-i">
+ 	 	<label for="-i">-i</label>
+ 	 </div>
+	 <div>
+	    <input type="checkbox" id="s" name="-s" value="-s">
+ 	   <label for="-s">-s</label>
+ 	 </div>
+	 <div>
+	    <input type="checkbox" id="-u" name="-u" value="-u">
+ 	   <label for="-u">-u</label>
+ 	 </div>
+	 <div>
+ 	 	<label for="-m">-m</label>
+		<input type="text" id="-m" name="-m">
+	 </div>
+	 <div>
+ 	 	<label for="-n">-n</label>
+		<input type="number" id="-n" name="-n">
+	</div>
+	<div>
+		<div id="args"></div>
+	</div>
+	<button type="submit">send</button>
+</form>
+<button id="add">Argl</button>
+<script type="text/javascript" src="/static/js/fortune.js"></script>
+<script>
+	let e = [
+		{{range .Data.Data}}
+            		"{{.}}",
+        	{{end}}
+	];
+	
+	fortune(e)
+</script>
 {{end}}

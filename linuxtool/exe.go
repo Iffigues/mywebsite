@@ -1,8 +1,12 @@
 package linuxtool
 
 import (
+	"net/http"
 	"errors"
 	"bytes"
+	"fmt"
+	"log"
+	"strings"
 	"os/exec"
 )
 
@@ -30,11 +34,86 @@ type Bash struct {
 }
 
 type Commande struct {
+	Ani []string
+	Fo []string
+	To []string
+	Toto []string
+	Fi []string
+	Fifi []string
 	Co map[string]Bash
 }
 
+func (r *Commande) GetAn() (a []string){
+	cmd := exec.Command("/usr/games/cowsay","-l")
+	st, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatal(err)
+	}
+	dd := strings.Trim(string(st), "Cow files in /usr/share/cowsay/cows:")
+	dd = strings.TrimSpace(dd)
+	return strings.Split(dd," ")
+}
+
+func (r *Commande) GetTo() (a []string, b []string){
+	cmd := exec.Command("toilet","-F","list")
+	st, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatal(err)
+	}
+	ff := strings.Split(string(st),"\n")
+	for _, val := range ff[1:len(ff) - 1] {
+		r := strings.Split(val, "\"")
+		a = append(a, r[1])
+	}
+	cmd = exec.Command("toilet", "-E", "list")
+	st, err = cmd.CombinedOutput()
+	if err != nil {
+		log.Fatal(err)
+	}
+	ff = strings.Split(string(st), "\n")
+	for _, val :=  range ff[1:len(ff) - 1] {
+		r := strings.Split(val, "\"")
+		b = append(b, r[1])
+	}
+	return
+}
+
+
+func (r *Commande) GetFi() (a []string, b []string){
+	cmd := exec.Command("figlist")
+	st, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatal(err)
+	}
+	ll := strings.Split(string(st), "Figlet control files in this directory:")
+	a = strings.Split(ll[0], "\n")[3:]
+	b = strings.Split(ll[1], "\n")
+	return
+}
+
+func (r *Commande) GetFo() (a []string){
+	cmd := exec.Command("/usr/games/fortune","-f")
+	st, err := cmd.CombinedOutput()
+	if err != nil {
+	}
+	dd := strings.Trim(string(st), "100.00% /usr/share/games/fortunes")
+	d := strings.Split(dd,"\n")
+	d = d[1:len(d)-1]
+	for k,v := range d {
+		d[k] = strings.TrimSpace(v)
+		e := strings.Split(d[k], " ")
+		d[k] = e[1]
+	}
+	return d
+}
+
+
 func NewCommand() (r *Commande){
 	r = &Commande{}
+	r.Ani = r.GetAn()
+	r.Fo = r.GetFo()
+	r.To, r.Toto = r.GetTo()
+	r.Fi, r.Fifi = r.GetFi()
 	r.Co = make(map[string]Bash)
 	r.Co["fortune"] = MakeFortune()
 	r.Co["figlet"] = MakeFiglet()
@@ -42,6 +121,43 @@ func NewCommand() (r *Commande){
 	r.Co["cowsay"] = MakeCowsay()
 	r.Co["cowthink"] = MakeCowthink()
 	r.Co["rig"] = MakeRig()
+	return
+}
+
+
+func (r *Commande) MakeFoArg(re *http.Request) (c []string){
+	c = nil
+	re.ParseForm()
+	for k,v := range re.Form {
+		fmt.Println(v)
+		if strings.HasPrefix(k, "type-") {
+			if vv, ok := re.Form["percent-" + k[5:]]; ok {
+				fmt.Println("vv",vv)
+			}
+		}
+	}
+	return
+}
+
+func (r *Commande) MakeHaha(a string, re *http.Request) (b []Haha){
+	re.ParseForm()
+	tt := r.Co[a].Com
+	for key, val := range re.Form{
+			if len(val[0]) > 0 {
+			var gg Haha
+			fmt.Println("ez",key, val, len(val))
+			for _, vals := range tt {
+				if key == vals.A {
+					gg.B = key
+					if vals.B > 0 {
+						gg.C  = append(gg.C, val[0])
+					}
+					b = append(b, gg)
+				}
+			}
+		}
+	}
+	fmt.Println(b)
 	return
 }
 

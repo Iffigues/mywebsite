@@ -1,0 +1,57 @@
+{{define "body"}}
+<pre>{{.Data.Fortune}}</pre>
+<form method="post" action="/cowsay">
+<div>
+  <input type="checkbox" id="think" name="think">
+  <label for="think">think</label>
+</div>
+<div>
+  <input type="checkbox" id="-l" name="-l">
+  <label for="-l">-l</label>
+</div>
+<div>
+  <input type="checkbox" id="-b" name="-b">
+  <label for="-b">-b</label>
+</div>
+<div>
+  <input type="checkbox" id="-d" name="-d">
+  <label for="-d">-d</label>
+</div>
+<div>
+  <input type="checkbox" id="-g" name="-g">
+  <label for="-g">-g</label>
+</div>
+<div>
+  <input type="checkbox" id="-p" name="-p">
+  <label for="-p">-p</label>
+</div>
+<div>
+  <input type="checkbox" id="-s" name="-s">
+  <label for="-s">-s</label>
+</div>
+<div>
+  <input type="checkbox" id="-t" name="-t">
+  <label for="-t">-t</label>
+</div>
+<div>
+  <input type="checkbox" id="-w" name="-w">
+  <label for="-w">-w</label>
+</div>
+<div>
+ 	 	<label for="-e">-e</label>
+		<input type="text" id="-e" name="-e">
+	 </div>
+	 <div>
+ 	 	<label for="-T">-T</label>
+		<input type="text" id="-T" name="-T">
+	 </div>
+	 <label for="pet-select">Choose a pet:</label>
+<select name="-f" id="-f">
+    <option value="">--Please choose an option--</option>
+	{{ range $value := .Data.Data }}
+	<option value="{{ $value }}">{{$value}}</option>
+	{{ end }}
+	</select>
+<button type="submit" />
+</form>
+{{end}}

@@ -1,6 +1,7 @@
 package types
 
 import (
+	"polaroid/linuxtool"
 	"polaroid/config"
 	//"polaroid/pk"
 
@@ -10,5 +11,6 @@ import (
 type Data struct {
 	Store *sessions.CookieStore
 	Conf  config.Config
+	Commande  *linuxtool.Commande 
 	//Db    *pk.Pk
 }

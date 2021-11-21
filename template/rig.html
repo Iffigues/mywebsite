@@ -1,0 +1,19 @@
+{{define "body"}}
+<pre>{{.Data.Fortune}}</pre>
+<form action="/rig" method="post">
+<div>
+	   <input type="checkbox" id="-m" name="-m" value="-m">
+ 	   <label for="-m">-m</label>
+ 	 </div>
+	 	<div>
+	   <input type="checkbox" id="-f" name="-f" value="-f">
+ 	   <label for="-f">-f</label>
+ 	 </div>
+	  <div>
+ 	 	<label for="-c">-c</label>
+		<input type="number" id="-c" name="-c">
+	</div>
+
+	<button type="submit" />
+</form>
+{{end}}

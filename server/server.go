@@ -21,7 +21,6 @@ type Server struct {
 	Router *mux.Router
 	Data   *types.Data
 	Handle map[string]*Handle
-	Linux *linuxtool.Commande
 	Give   []HH
 }
 
@@ -52,6 +51,7 @@ func NewServer(conf config.Config) *Server {
 		Data: &types.Data{
 			Store: sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY"))),
 			Conf:  conf,
+			Commande: linuxtool.NewCommand(),
 			//Db:    pk.NewPk(conf["pk"]),
 		},
 		Router: router,
