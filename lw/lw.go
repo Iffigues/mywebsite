@@ -23,6 +23,8 @@ type Fortune struct {
 	Fortune string
 	Data []string
 	Datas []string
+	Datal []string
+	I string
 }
 
 func (a *Lw) Fortune(e *types.Data) http.Handler {
@@ -61,25 +63,43 @@ func (a *Lw) Fortune(e *types.Data) http.Handler {
 func (a *Lw) Toilet(e *types.Data) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var tt []linuxtool.Haha
+		var rr *linuxtool.Mimi = nil
+		var err error
+		var ttl linuxtool.Commande
+		var i string = "1"
+
 		if r.Method == "GET" {
 			ee := linuxtool.Haha{"-F",[]string{"gay"}}
 			tt = append(tt, ee)
 			oui := linuxtool.Haha{"-f",[]string{"mono12"}}
 			tt = append(tt, oui)
-			rr , err := e.Commande.Make("toilet", tt, []string{"welcome home"})
+			rr , err = e.Commande.Make("toilet", tt, []string{"welcome home"})
 			if err != nil {
 			}
-			a, _, c := e.Commande.Exec(rr)
-			if c != nil {
-			}
-			head := tool.NewHeader(r, w, "gopiko-toilet", e)
-			head.SetData(&Fortune{
-				Fortune:a.String(),
-			})
-			head.Jointure("layout.html", "toilet.html")
 		}
 		if r.Method == "POST" {
+			tt = e.Commande.MakeHaha("toilet", r)
+			rr, err = e.Commande.Make("toilet", tt, ttl.GetMessage(r))
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
+		a, _, c := e.Commande.Exec(rr)
+		if c != nil {
+		}
+		rts, rtt := ttl.GetTo()
+		ree, _ := ttl.GetFi()
+		head := tool.NewHeader(r, w, "gopiko-toilet", e)
+		i = ttl.GetTT(tt)
+		println("i==",i)
+		head.SetData(&Fortune{
+			Fortune:a.String(),
+			Data: rts,
+			Datas: rtt,
+			Datal: ree,
+			I: i,
+		})
+		head.Jointure("layout.html", "toilet.html")
 	})
 }
 
@@ -123,7 +143,7 @@ func (a *Lw) Figlet(e *types.Data) http.Handler {
 		}
 		if r.Method == "POST" {
 			dd := e.Commande.MakeHaha("figlet", r)
-			rr, err = e.Commande.Make("figlet", dd, []string{"zzz"})
+			rr, err = e.Commande.Make("figlet", dd, tls.GetMessage(r))
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -154,7 +174,9 @@ func (a *Lw) Cow(e *types.Data) http.Handler {
 		}
 		if r.Method == "POST" {
 			dd := e.Commande.MakeHaha("cowsay", r)
-			rr, err = e.Commande.Make("cowsay", dd, []string{"zzz"})
+			ee := tt.Think(r)
+			fmt.Println(ee)
+			rr, err = e.Commande.Make(ee, dd, tt.GetMessage(r))
 			if err != nil {
 				fmt.Println(err)
 			}

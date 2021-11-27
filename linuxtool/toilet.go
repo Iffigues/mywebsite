@@ -13,8 +13,7 @@ func MakeToilet() (a Bash) {
 		How{"-o", 0},
 		How{"-w", 1},
 		How{"-F", 1},
-		How{"--gay", 0},
-		How{"--metal", 0},
+		How{"-E", 1},
 	}
 	a.Com = e
 	return

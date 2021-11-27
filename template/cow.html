@@ -45,13 +45,23 @@
  	 	<label for="-T">-T</label>
 		<input type="text" id="-T" name="-T">
 	 </div>
+	 <div>
+		 <div>
 	 <label for="pet-select">Choose a pet:</label>
+	 </div>
 <select name="-f" id="-f">
     <option value="">--Please choose an option--</option>
 	{{ range $value := .Data.Data }}
 	<option value="{{ $value }}">{{$value}}</option>
 	{{ end }}
 	</select>
-<button type="submit" />
+	</div>
+	<div>
+		<label for="message" ></label>
+		<input type="text"id="message" name="message"></input>
+	</div>
+	<div>
+	<button type="submit"/>
+	</div>
 </form>
 {{end}}

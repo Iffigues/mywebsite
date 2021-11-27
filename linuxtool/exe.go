@@ -43,6 +43,20 @@ type Commande struct {
 	Co map[string]Bash
 }
 
+func (r Commande) GetTT(a []Haha) (i string) {
+	i = "1"
+	for _, v := range a {
+		if v.B == "-E" {
+			for _, k := range v.C {
+				if k == "bbfr" || k == "ansi" || k == "utf8" || k == "utf8cr"||  k == "irc" || k == "ps" {
+					i = "2"
+				}
+			}
+		}
+	}
+	return i
+}
+
 func (r *Commande) GetAn() (a []string){
 	cmd := exec.Command("/usr/games/cowsay","-l")
 	st, err := cmd.CombinedOutput()
@@ -87,7 +101,8 @@ func (r *Commande) GetFi() (a []string, b []string){
 	}
 	ll := strings.Split(string(st), "Figlet control files in this directory:")
 	a = strings.Split(ll[0], "\n")[3:]
-	b = strings.Split(ll[1], "\n")
+	a[len(a) - 1] = "mono12"
+	b = strings.Split(ll[1], "\n")[1:]
 	return
 }
 
@@ -141,6 +156,24 @@ func (r *Commande) MakeFoArg(re *http.Request) (c []string){
 			}
 	}
 	return
+}
+
+func (r *Commande) GetMessage(re *http.Request) (a []string) {
+	re.ParseForm()
+	if v, ok := re.Form["message"]; ok {
+		return v
+	}
+	return nil
+}
+
+func (r *Commande) Think(re *http.Request) (a string) {
+	re.ParseForm()
+	if v, ok := re.Form["think"]; ok {
+		if len(v) > 0 && v[0] == "on" {
+			return "cowthink"
+		}
+	}
+	return "cowsay"
 }
 
 func (r *Commande) MakeHaha(a string, re *http.Request) (b []Haha){
