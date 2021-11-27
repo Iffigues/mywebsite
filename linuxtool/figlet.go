@@ -13,7 +13,7 @@ func MakeFiglet() (a Bash) {
 		How{"-c", 0},
 		How{"-f", 1},
 		How{"-C", 1},
-		How{"-N", 1},
+		How{"-N", 0},
 		How{"-w", 1},
 		How{"-p", 0},
 		How{"-n", 0},

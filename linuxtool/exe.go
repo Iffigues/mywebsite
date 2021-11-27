@@ -129,12 +129,16 @@ func (r *Commande) MakeFoArg(re *http.Request) (c []string){
 	c = nil
 	re.ParseForm()
 	for k,v := range re.Form {
-		fmt.Println(v)
-		if strings.HasPrefix(k, "type-") {
-			if vv, ok := re.Form["percent-" + k[5:]]; ok {
-				fmt.Println("vv",vv)
+			if strings.HasPrefix(k, "type-") {
+				if len(v) > 0 && v[0] != "" {
+				if vv, ok := re.Form["percent-" + k[5:]]; ok {
+					if len(vv) > 0 && vv[0] != ""  {
+						c = append(c, vv[0] + "%")
+					}
+				}
+					c = append(c, v[0])
+				}
 			}
-		}
 	}
 	return
 }

@@ -22,6 +22,7 @@ func NewLw(s *types.Data) (a *Lw) {
 type Fortune struct {
 	Fortune string
 	Data []string
+	Datas []string
 }
 
 func (a *Lw) Fortune(e *types.Data) http.Handler {
@@ -45,10 +46,9 @@ func (a *Lw) Fortune(e *types.Data) http.Handler {
 				fmt.Println(err)
 			}
 		}
-		a,b,c := e.Commande.Exec(rr)
+		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
 		}
-		fmt.Println(a, b , c)
 		head := tool.NewHeader(r, w, "gopiko-fortune", e)
 		head.SetData(&Fortune{
 			Fortune:a.String(),
@@ -69,10 +69,9 @@ func (a *Lw) Toilet(e *types.Data) http.Handler {
 			rr , err := e.Commande.Make("toilet", tt, []string{"welcome home"})
 			if err != nil {
 			}
-			a,b,c := e.Commande.Exec(rr)
+			a, _, c := e.Commande.Exec(rr)
 			if c != nil {
 			}
-			fmt.Println(a.String(), b.String() , c)
 			head := tool.NewHeader(r, w, "gopiko-toilet", e)
 			head.SetData(&Fortune{
 				Fortune:a.String(),
@@ -100,10 +99,9 @@ func (a *Lw) Rig(e *types.Data) http.Handler {
 				fmt.Println(err)
 			}
 		}
-		a, b, c := e.Commande.Exec(rr)
+		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
 		}
-		fmt.Println(a.String(), b.String() , c)
 		head := tool.NewHeader(r, w, "gopiko-rig", e)
 		head.SetData(&Fortune{
 			Fortune:a.String(),
@@ -116,21 +114,28 @@ func (a *Lw) Figlet(e *types.Data) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var rr  *linuxtool.Mimi = nil
 		var err error
-
+		var tls linuxtool.Commande
+		ll, lll := tls.GetFi()
 		if r.Method == "GET" {
 			rr , err = e.Commande.Make("figlet", nil, []string{"welcome home"})
 			if err != nil {
 			}
 		}
 		if r.Method == "POST" {
+			dd := e.Commande.MakeHaha("figlet", r)
+			rr, err = e.Commande.Make("figlet", dd, []string{"zzz"})
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
-		a,b,c := e.Commande.Exec(rr)
+		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
 		}
-		fmt.Println(a.String(), b.String() , c)
 		head := tool.NewHeader(r, w, "gopiko-rig", e)
 		head.SetData(&Fortune{
 			Fortune:a.String(),
+			Data: ll,
+			Datas: lll,
 		})
 		head.Jointure("layout.html", "figlet.html")
 	})
@@ -156,7 +161,6 @@ func (a *Lw) Cow(e *types.Data) http.Handler {
 		}
 		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
-			fmt.Println(c)
 		}
 		head := tool.NewHeader(r, w, "gopiko-cow", e)
 		head.SetData(&Fortune{
@@ -169,8 +173,8 @@ func (a *Lw) Cow(e *types.Data) http.Handler {
 
 func (a *Lw) WWW(s *server.Server) {
 	s.NewR("/fortune", "fortune", []string{"GET", "POST"}, a.Fortune(s.Data), 1)
-	s.NewR("/toilet", "toilet", []string{"GET"}, a.Toilet(s.Data), 1)
+	s.NewR("/toilet", "toilet", []string{"GET", "POST"}, a.Toilet(s.Data), 1)
 	s.NewR("/rig", "rig", []string{"GET", "POST"}, a.Rig(s.Data), 1)
-	s.NewR("/figlet", "figlet", []string{"GET"}, a.Figlet(s.Data), 1)
+	s.NewR("/figlet", "figlet", []string{"GET", "POST"}, a.Figlet(s.Data), 1)
 	s.NewR("/cowsay", "cowsay", []string{"GET","POST"}, a.Cow(s.Data), 1)
 }
