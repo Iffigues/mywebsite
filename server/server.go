@@ -8,7 +8,6 @@ import (
 
 	"polaroid/types"
 	"polaroid/linuxtool"
-
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 )

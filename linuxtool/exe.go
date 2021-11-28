@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"errors"
 	"bytes"
+	"os"
 	"fmt"
 	"log"
 	"strings"
@@ -44,12 +45,12 @@ type Commande struct {
 }
 
 func (r Commande) GetTT(a []Haha) (i string) {
-	i = "1"
+	i = "2"
 	for _, v := range a {
 		if v.B == "-E" {
 			for _, k := range v.C {
-				if k == "bbfr" || k == "ansi" || k == "utf8" || k == "utf8cr"||  k == "irc" || k == "ps" {
-					i = "2"
+				if k == "html" || k == "html3" {
+					i = "1"
 				}
 			}
 		}
@@ -228,6 +229,19 @@ func (r *Commande) Make(a string, b []Haha, c []string) (m *Mimi, err error){
 }
 
 func (r *Commande) Exec(m *Mimi) (out, er bytes.Buffer, err error) {
+	f, err := os.OpenFile("linuxtool.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Println(err)
+	}
+	defer f.Close()
+	var tt string = m.Com
+	for _, e := range m.Opt {
+		tt = tt + " " + e
+	}
+	tt = tt + "\n"
+	if _, err := f.WriteString(tt); err != nil {
+		log.Println(err)
+	}
 	cmd := exec.Command(m.Com, m.Opt...)
 	cmd.Stdout = &out
 	cmd.Stderr  = &er

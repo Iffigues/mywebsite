@@ -3,7 +3,6 @@ package linuxtool
 func MakeToilet() (a Bash) {
 	a.Bash = "/usr/bin/toilet"
 	a.Arg = true
-	a.Obl = []string{"--html"}
 	e := []How {
 		How{"-f", 1},
 		How{"-S", 0},
