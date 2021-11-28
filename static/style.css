@@ -1,3 +1,17 @@
-#linux {
-	width: 100%
+
+html {
+  height: 100%;
 }
+body {
+  min-height: 100%;
+  background-color: #FEFEFE;
+}
+nav {
+	background-color: #FEFEFE;
+	border-style: solid;
+  border-radius: 25px;}
+
+#linux {
+	width: 100%	
+}
+

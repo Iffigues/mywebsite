@@ -69,6 +69,7 @@ func (a *Lw) Toilet(e *types.Data) http.Handler {
 		var i string = "1"
 
 		if r.Method == "GET" {
+			tt = append(tt, linuxtool.Haha{"-E", []string{"html"}})
 			ee := linuxtool.Haha{"-F",[]string{"gay"}}
 			tt = append(tt, ee)
 			oui := linuxtool.Haha{"-f",[]string{"mono12"}}

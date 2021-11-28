@@ -4,39 +4,11 @@
 	<head>
 		<meta name="theme-color" content="#ffffff">
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="/static/style.css">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-	<body>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Logo</a>
-    				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="/fortune">Fortune</a></li>
-								<li><a class="dropdown-item" href="/toilet">Toilet</a></li>
-								<li><a class="dropdown-item" href="/figlet">Figlet</a></li>
-								<li><a class="dropdown-item" href="/cowsay">Cowsay</a></li>
-								<li><a class="dropdown-item" href="/rig">rig</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
+	<body style="margin:0;padding:0">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding:2%;">
 		</nav>
 		<div id="root" class="">
 		{{template "body" .}}

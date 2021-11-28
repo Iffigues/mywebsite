@@ -66,7 +66,14 @@ func (r *Commande) GetAn() (a []string){
 	}
 	dd := strings.Trim(string(st), "Cow files in /usr/share/cowsay/cows:")
 	dd = strings.TrimSpace(dd)
-	return strings.Split(dd," ")
+	ff :=  strings.Split(dd, " ")
+	for _, gg := range ff {
+		ffg := strings.Split(gg, "\n")
+		for _, ez := range ffg {
+			a = append(a, ez)
+		}
+	}
+	return 
 }
 
 func (r *Commande) GetTo() (a []string, b []string){
@@ -229,7 +236,7 @@ func (r *Commande) Make(a string, b []Haha, c []string) (m *Mimi, err error){
 }
 
 func (r *Commande) Exec(m *Mimi) (out, er bytes.Buffer, err error) {
-	f, err := os.OpenFile("linuxtool.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile("linuxtool.log", os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
 		log.Println(err)
 	}
