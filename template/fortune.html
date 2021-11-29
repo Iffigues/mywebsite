@@ -1,8 +1,11 @@
 {{define "body"}}
-<pre class="mt-4 p-5 bg-dark text-white rounded">
+<center>
+<pre>
 {{.Data.Fortune}}
 </pre>
+</center>
 <form method="post" action="/fortune">
+	<div style="display:flex">
 	<div>
 	   <input type="checkbox" id="-a" name="-a" value="-a">
  	   <label for="-a">-a</label>
@@ -39,6 +42,7 @@
 	    <input type="checkbox" id="-u" name="-u" value="-u">
  	   <label for="-u">-u</label>
  	 </div>
+	 </div>
 	 <div>
  	 	<label for="-m">-m</label>
 		<input type="text" id="-m" name="-m">

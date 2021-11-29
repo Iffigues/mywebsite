@@ -1,10 +1,13 @@
 {{define "body"}}
+<div style="display:flex; align-items: center; justify-content: center;">
 <pre>{{.Data.Fortune}}</pre>
+</div>
 <form method="post" action="/cowsay">
 <div>
   <input type="checkbox" id="think" name="think">
   <label for="think">think</label>
 </div>
+<div style="display:flex;">
 <div>
   <input type="checkbox" id="-l" name="-l">
   <label for="-l">-l</label>
@@ -36,6 +39,7 @@
 <div>
   <input type="checkbox" id="-w" name="-w">
   <label for="-w">-w</label>
+</div>
 </div>
 <div>
  	 	<label for="-e">-e</label>

@@ -1,4 +1,5 @@
 {{define "body"}}
+<center>
 {{if eq .Data.I "2"}}
 <pre>
 {{end}}
@@ -6,7 +7,9 @@
 {{if eq .Data.I "2"}}
 </pre>
 {{end}}
+</center>
 <form action="/toilet" method="POST">
+<div style="display:flex;">
 <div>
   <input type="checkbox" id="-S" name="-S">
   <label for="-S">-S</label>
@@ -26,6 +29,7 @@
 <div>
   <input type="checkbox" id="-o" name="-o">
   <label for="-o">-o</label>
+</div>
 </div>
 <div>
   <input type="number" id="-w" name="-w">

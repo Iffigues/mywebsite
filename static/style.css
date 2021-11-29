@@ -5,13 +5,19 @@ html {
 body {
   min-height: 100%;
   background-color: #FEFEFE;
+  justify-content: space-around;
 }
 nav {
 	background-color: #FEFEFE;
 	border-style: solid;
-  border-radius: 25px;}
-
-#linux {
-	width: 100%	
+	border-radius: 25px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
+
+.na {
+  flex-grow: 1; /* default 0 */
+  flex-basis: auto;
+}

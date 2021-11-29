@@ -4,7 +4,7 @@ func MakeCowsay() (a Bash) {
 	a.Bash = "/usr/games/cowsay"
 	a.Arg = true
 	e := []How {
-		How{"-e", 0},
+		How{"-e", 1},
 		How{"-f", 1},
 		How{"-l", 0},
 		How{"-T", 1},

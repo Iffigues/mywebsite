@@ -4,7 +4,7 @@ func MakeCowthink() (a Bash) {
 	a.Bash = "/usr/games/cowthink"
 	a.Arg = true
 	e := []How {
-		How{"-e", 0},
+		How{"-e", 1},
 		How{"-f", 1},
 		How{"-l", 0},
 		How{"-T", 1},

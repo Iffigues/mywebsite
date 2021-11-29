@@ -1,9 +1,12 @@
 {{define "body"}}
+<center>
 <pre>
 {{.Data.Fortune}}
 </pre>
+</center>
 <form method="post" action="/figlet">
- <div>
+<div style="display:flex;">
+<div>
        	<input type="checkbox" id="-r" name="-r" value="-r">
 	<label for="-r">-r</label>
 </div>
@@ -78,6 +81,7 @@
 <div>
 	<input type="checkbox" id="-N" name="-N" value="-N">
 	<label for="-N">-N</label>
+</div>
 </div>
 <div>
 	<label for="-w">-w</label>
