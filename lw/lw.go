@@ -151,6 +151,7 @@ func (a *Lw) Figlet(e *types.Data) http.Handler {
 		}
 		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
+			fmt.Println(c)
 		}
 		head := tool.NewHeader(r, w, "gopiko-rig", e)
 		head.SetData(&Fortune{

@@ -9,8 +9,8 @@ body {
 }
 nav {
 	background-color: #FEFEFE;
-	border-style: solid;
-	border-radius: 25px;
+	border-bottom: solid;
+	border-color: black;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
