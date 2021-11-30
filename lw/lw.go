@@ -123,6 +123,7 @@ func (a *Lw) Rig(e *types.Data) http.Handler {
 		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
 		}
+		println("eee")
 		head := tool.NewHeader(r, w, "gopiko-rig", e)
 		head.SetData(&Fortune{
 			Fortune:a.String(),

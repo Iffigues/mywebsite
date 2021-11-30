@@ -188,17 +188,20 @@ func (r *Commande) Think(re *http.Request) (a string) {
 func (r *Commande) MakeHaha(a string, re *http.Request) (b []Haha){
 	re.ParseForm()
 	tt := r.Co[a].Com
+	fmt.Println(re.Form)
 	for key, val := range re.Form{
 			if len(val[0]) > 0 {
-			var gg Haha
 			fmt.Println("ez",key, val, len(val))
 			for _, vals := range tt {
 				if key == vals.A {
-					gg.B = key
-					if vals.B > 0 {
-						gg.C  = append(gg.C, val[0])
+					for _, ee := range val {
+						var gg Haha
+						gg.B = key
+						if vals.B > 0 {
+							gg.C  = append(gg.C, ee)
+						}
+						b = append(b, gg)
 					}
-					b = append(b, gg)
 				}
 			}
 		}
@@ -265,12 +268,15 @@ func (r *Commande) Exec(m *Mimi) (out, er bytes.Buffer, err error) {
 	}()
 	select {
 	case <-time.After(5 * time.Second):
-	    if err := cmd.Process.Kill(); err != nil {
-	    }
-	    return
+		println("non")
+		if err := cmd.Process.Kill(); err != nil {
+			println("oui")
+		}
+		return
 	case err := <-done:
-	    if err != nil {
-	    }
-}
+		if err != nil {
+			println(err.Error())
+		}
+	}
 	return
 }
