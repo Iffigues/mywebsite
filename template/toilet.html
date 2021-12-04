@@ -57,6 +57,14 @@
 	{{ end }}
 </select>
 </div>
+<div id="lo">
+<select name="-F" id="-F">
+	<option value="">--Please choose an option--</option>
+	{{ range $value := .Data.Data }}
+	<option value="{{ $value }}">{{$value}}</option>
+	{{ end }}
+</select>
+</div>
 <div>
 <select name="-E" id="-E">
 	<option value="">--Please choose an option--</option>
@@ -71,15 +79,5 @@
 </div>
 <button type="submit">Ok</button>
 </form>
-<button id="ez">Argl</button>
-<script>
-	let add = document.getElementById("lo");
-	let ad = document.getElementById("-F")
-	let af = document.getElementById("ez");
-	af.addEventListener('click', event => {
-		var clone = ad.cloneNode(true); 
-		add.parentNode.appendChild(clone);
-	})
-</script>
 {{end}}
 

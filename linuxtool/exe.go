@@ -268,9 +268,9 @@ func (r *Commande) Exec(m *Mimi) (out, er bytes.Buffer, err error) {
 	}()
 	select {
 	case <-time.After(5 * time.Second):
-		println("non")
+		println("programe kill")
 		if err := cmd.Process.Kill(); err != nil {
-			println("oui")
+			fmt.Println(err)
 		}
 		return
 	case err := <-done:

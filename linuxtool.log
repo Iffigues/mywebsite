@@ -285,3 +285,12 @@ dragon-and-cow -d dfsdfsdfsdfs
 /usr/bin/toilet -F border -F gay -E svg -w 1000 welcome home
 /usr/games/cowsay welcome home
 /usr/games/cowsay -s 
+/usr/bin/toilet -E html -F gay -f mono12 welcome home
+/usr/bin/figlet welcome home
+/usr/bin/toilet -E html -F gay -f mono12 welcome home
+/usr/bin/toilet -E svg -f big -F gay -F border 123456
+/usr/bin/toilet -E html -F gay -f mono12 welcome home
+/usr/games/cowsay welcome home
+/usr/bin/toilet -E html -F gay -f mono12 welcome home
+/usr/bin/rig
+/usr/bin/rig -c 10000000000
