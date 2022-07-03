@@ -261,14 +261,12 @@ func (r *Commande) Exec(m *Mimi) (out, er bytes.Buffer, err error) {
 	if err != nil {
 		return out, er, err
 	}
-
-
 	done := make(chan error, 1)
 	go func() {
 	    done <- cmd.Wait()
 	}()
 	select {
-	case <-time.After(5 * time.Second):
+	case <-time.After(60 * time.Second):
 		println("programe kill")
 		if err := cmd.Process.Kill(); err != nil {
 			fmt.Println(err)
