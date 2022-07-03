@@ -1,0 +1,77 @@
+{{define "body"}}
+<div style="display: flex;flex-direction: row;justify-content: center;padding-left: 2%;">
+	<div class="na"><a href="/fortune">fortune</a></div>
+	<div class="na"><a href="/rig">rig</a></div>
+	<div class="na"><a href="/toilet">toilet</a></div>
+	<div class="na"><a href="/figlet">figlet</a></div>
+</div>
+<div style="display:flex; align-items: center; justify-content: center; line-height: initial !important;">
+<pre>{{.Data.Fortune}}</pre>
+</div>
+<form method="post" action="/cowsay">
+<div>
+  <input type="checkbox" id="think" name="think">
+  <label for="think">think</label>
+</div>
+<div style="display:flex;">
+<div>
+  <input type="checkbox" id="-l" name="-l">
+  <label for="-l">-l</label>
+</div>
+<div>
+  <input type="checkbox" id="-b" name="-b">
+  <label for="-b">-b</label>
+</div>
+<div>
+  <input type="checkbox" id="-d" name="-d">
+  <label for="-d">-d</label>
+</div>
+<div>
+  <input type="checkbox" id="-g" name="-g">
+  <label for="-g">-g</label>
+</div>
+<div>
+  <input type="checkbox" id="-p" name="-p">
+  <label for="-p">-p</label>
+</div>
+<div>
+  <input type="checkbox" id="-s" name="-s">
+  <label for="-s">-s</label>
+</div>
+<div>
+  <input type="checkbox" id="-t" name="-t">
+  <label for="-t">-t</label>
+</div>
+<div>
+  <input type="checkbox" id="-w" name="-w">
+  <label for="-w">-w</label>
+</div>
+</div>
+<div>
+ 	 	<label for="-e">-e</label>
+		<input type="text" id="-e" name="-e">
+	 </div>
+	 <div>
+ 	 	<label for="-T">-T</label>
+		<input type="text" id="-T" name="-T">
+	 </div>
+	 <div>
+		 <div>
+	 <label for="pet-select">Choose a pet:</label>
+	 </div>
+<select name="-f" id="-f">
+    <option value="">--Please choose an option--</option>
+	{{ range $value := .Data.Data }}
+	<option value="{{ $value }}">{{$value}}</option>
+	{{ end }}
+	</select>
+	</div>
+	<div>
+		<label for="message" ></label>
+		<input type="text"id="message" name="message"></input>
+	</div>
+	<div>
+		<button type="submit">Ok</button>
+	</div>
+</form>
+{{end}}

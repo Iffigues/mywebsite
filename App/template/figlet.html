@@ -1,0 +1,122 @@
+{{define "body"}}
+<div style="display: flex;flex-direction: row;justify-content: center; padding-left: 2%;">
+	<div class="na"><a href="/fortune">fortune</a></div>
+	<div class="na"><a href="/cowsay">cowsay</a></div>
+	<div class="na"><a href="/rig">rig</a></div>
+	<div class="na"><a href="/toilet">toilet</a></div>
+</div>
+<center style="line-height: initial !important;">
+<pre>
+{{.Data.Fortune}}
+</pre>
+</center>
+<form method="post" action="/figlet">
+<div style="display:flex;">
+<div>
+       	<input type="checkbox" id="-r" name="-r" value="-r">
+	<label for="-r">-r</label>
+</div>
+ <div>
+	<input type="checkbox" id="-x" name="-x" value="-x">
+ 	<label for="-x">-x</label>
+</div>
+<div>
+	<input type="checkbox" id="-L" name="-L" value="-L">
+	<label for="-L">-L</label>
+</div>
+<div>
+	<input type="checkbox" id="-R" name="-R" value="-R">
+	<label for="-R">-R</label>
+</div>
+<div>
+	<input type="checkbox" id="-X" name="-X" value="-X">
+	<label for="-X">-X</label>
+</div>
+<div>
+	<input type="checkbox" id="-l" name="-l" value="-l">
+	<label for="-l">-l</label>
+</div>
+<div>
+	<input type="checkbox" id="-c" name="-c" value="-c">
+	<label for="-c">-c</label>
+</div>
+<div>
+	<input type="checkbox" id="-p" name="-p" value="-p">
+	<label for="-p">-p</label>
+</div>
+<div>
+	<input type="checkbox" id="-n" name="-n" value="-n">
+	<label for="-n">-n</label>
+</div>
+<div>
+	<input type="checkbox" id="-o" name="-o" value="-o">
+	<label for="-o">-o</label>
+</div>
+<div>
+	<input type="checkbox" id="-W" name="-W" value="-W">
+	<label for="-W">-W</label>
+</div>
+<div>
+	<input type="checkbox" id="-k" name="-k" value="-k">
+	<label for="-k">-k</label>
+</div>
+<div>
+	<input type="checkbox" id="-S" name="-S" value="-S">
+	<label for="-S">-S</label>
+</div>
+<div>
+	<input type="checkbox" id="-s" name="-s" value="-s">
+	<label for="-s">-s</label>
+</div>
+<div>
+	<input type="checkbox" id="-N" name="-N" value="-N">
+	<label for="-N">-N</label>
+</div>
+<div>
+	<input type="checkbox" id="-E" name="-E" value="-E">
+	<label for="-E">-E</label>
+</div>
+<div>
+	<input type="checkbox" id="-D" name="-D" value="-D">
+	<label for="-D">-D</label>
+</div>
+<div>
+	<input type="checkbox" id="-t" name="-t" value="-t">
+	<label for="-t">-t</label>
+</div>
+<div>
+	<input type="checkbox" id="-N" name="-N" value="-N">
+	<label for="-N">-N</label>
+</div>
+</div>
+<div>
+	<label for="-w">-w</label>
+	<input type="number" id="-w" name="-w">
+</div>
+<div>
+	<label for="-m">-m</label>
+	<input type="number" id="-m" name="-m">
+</div>
+<div>
+<select name="-f" id="-f">
+	<option value="">--Please choose an option--</option>
+	{{ range $value := .Data.Data }}
+	<option value="{{ $value }}">{{$value}}</option>
+	{{ end }}
+</select>
+</div>
+<div>
+<select name="-C" id="-C">
+	<option value="">--Please choose an option--</option>
+	{{ range $value := .Data.Datas }}
+	<option value="{{ $value }}">{{$value}}</option>
+	{{ end }}
+</select>
+</div>
+<div>
+	<label for="message">message</label>
+	<input type="text" id="message" name="message"></input>
+</div>
+<button type="submit">Ok</button>
+</form>
+{{end}}
