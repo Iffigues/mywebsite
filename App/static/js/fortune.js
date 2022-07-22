@@ -1,10 +1,10 @@
 let addArgs = (i,e) => {
 	let bb = document.getElementById("args");
-	let rr = `<div id="delete-`+i+`"><input type="number" id=percent-"`+i+`" name="percent-`+i+`" min="0" max="100"><select name="type-` + i + `"><option value=""></option>`		
+	let rr = `<div id="delete-`+i+`"><input class="form-control" type="number" id=percent-"`+i+`" name="percent-`+i+`" min="0" max="100"><select class="form-control name="type-` + i + `">`		
 	e.forEach((element) => {
 		rr += `<option value="`+element+`">`+element+`</option>`
 	} ) 
-	rr +=  `</select><p id="del-`+i+`">Delete</p></div>`;
+	rr +=  `</select><button type="button" class="btn btn-danger"id="del-`+i+`" onClick="Del(i)">Delete</button></div>`;
 	bb.innerHTML += rr
 	Del(i)
 }

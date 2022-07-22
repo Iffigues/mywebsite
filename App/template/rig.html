@@ -1,10 +1,4 @@
 {{define "body"}}
-<div style="display: flex;flex-direction: row;justify-content: center;padding-left: 2%;">
-	<div class="na"><a href="/fortune">fortune</a></div>
-	<div class="na"><a href="/cowsay">cowsay</a></div>
-	<div class="na"><a href="/toilet">toilet</a></div>
-	<div class="na"><a href="/figlet">figlet</a></div>
-</div>
 <form action="/rig" method="post">
 <div>
 	   <input type="checkbox" id="-m" name="-m" value="-m">
@@ -21,7 +15,14 @@
 
 	<button type="submit">Ok</button>
 </form>
-<center>
-	<pre>{{.Data.Fortune}}</pre>
-</center>
+<div class="row">
+{{ range $index, $data:= .Data}}
+<div class="card col-sm-2">
+		 <div class="card-header">{{$data.Name}}</div>
+		 <div class="card-body">{{$data.Addr}}</div> 
+		 <div class="card-footer">{{$data.Postal}}</div>
+		 <div class:"card-text">{{$data.Tel}}</div>
+  </div>
+{{ end }}
+</div>
 {{end}}

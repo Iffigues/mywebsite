@@ -1,13 +1,7 @@
 {{define "body"}}
-<div style="display: flex;flex-direction: row;justify-content: center;padding-left: 2%;">
-	<div class="na"><a href="/fortune">fortune</a></div>
-	<div class="na"><a href="/rig">rig</a></div>
-	<div class="na"><a href="/toilet">toilet</a></div>
-	<div class="na"><a href="/figlet">figlet</a></div>
-</div>
 <div style="display:flex; align-items: center; justify-content: center; line-height: initial !important;">
-<pre>{{.Data.Fortune}}</pre>
-</div>
+	<pre>{{.Data.Fortune}}</pre>
+	</div>
 <form method="post" action="/cowsay">
 <div>
   <input type="checkbox" id="think" name="think">

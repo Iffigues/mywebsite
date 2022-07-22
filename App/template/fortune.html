@@ -1,10 +1,4 @@
 {{define "body"}}
-<div style="display: flex;flex-direction: row;justify-content: center;padding-left: 2%;">
-	<div class="na"><a href="/cowsay">cowsay</a></div>
-	<div class="na"><a href="/rig">rig</a></div>
-	<div class="na"><a href="/toilet">toilet</a></div>
-	<div class="na"><a href="/figlet">figlet</a></div>
-</div>
 <center>
 <pre>
 {{.Data.Fortune}}
@@ -13,56 +7,56 @@
 <form method="post" action="/fortune">
 	<div style="display:flex">
 	<div>
-	   <input type="checkbox" id="-a" name="-a" value="-a">
- 	   <label for="-a">-a</label>
- 	 </div>
-	 <div>
-	   <input type="checkbox" id="-c" name="-c" value="-c">
- 	   <label for="-c">-c</label>
- 	 </div>
-	<div>
-	   <input type="checkbox" id="-e" name="-e" value="-e">
- 	   <label for="-e">-e</label>
- 	 </div>
-	<div>
-	   <input type="checkbox" id="-f" name="-f" value="-f">
- 	   <label for="-f">-f</label>
- 	</div>
-	<div>
-	   <input type="checkbox" id="-l" name="-l" value="-l">
- 	   <label for="-l">-l</label>
- 	</div>
-	<div>
-		<input type="checkbox" id="-o" name="-o" value="-o">
- 	   <label for="-o">-o</label>
- 	 </div>
-	 <div>
-	 	<input type="checkbox" id="-i" name="-i" value="-i">
- 	 	<label for="-i">-i</label>
- 	 </div>
-	 <div>
-	    <input type="checkbox" id="s" name="-s" value="-s">
- 	   <label for="-s">-s</label>
- 	 </div>
-	 <div>
-	    <input type="checkbox" id="-u" name="-u" value="-u">
- 	   <label for="-u">-u</label>
- 	 </div>
-	 </div>
-	 <div>
- 	 	<label for="-m">-m</label>
-		<input type="text" id="-m" name="-m">
-	 </div>
-	 <div>
- 	 	<label for="-n">-n</label>
-		<input type="number" id="-n" name="-n">
+	   <input class="form-check-input" type="checkbox" id="-a" name="-a" value="-a">
+ 		<label class="form-check-label" for="-a">-a</label>
 	</div>
+	 <div>
+	   <input class="form-check-input" type="checkbox" id="-c" name="-c" value="-c">
+ 	   <label class="form-check-label" for="-c">-c</label>
+ 	 </div>
+	<div>
+	   <input class="form-check-input" type="checkbox" id="-e" name="-e" value="-e">
+ 	   <label class="form-check-label" for="-e">-e</label>
+ 	 </div>
+	<div>
+	   <input class="form-check-input" type="checkbox" id="-f" name="-f" value="-f">
+ 	   <label class="form-check-label" for="-f">-f</label>
+ 	</div>
+	<div>
+	   <input class="form-check-input" type="checkbox" id="-l" name="-l" value="-l">
+ 	   <label class="form-check-label" for="-l">-l</label>
+ 	</div>
+	<div>
+		<input class="form-check-input" type="checkbox" id="-o" name="-o" value="-o">
+ 	   <label class="form-check-label" for="-o">-o</label>
+ 	 </div>
+	 <div>
+	 	<input class="form-check-input" type="checkbox" id="-i" name="-i" value="-i">
+ 	 	<label class="form-check-label" for="-i">-i</label>
+ 	 </div>
+	 <div>
+	    <input class="form-check-input" type="checkbox" id="s" name="-s" value="-s">
+ 	   <label class="form-check-label" for="-s">-s</label>
+ 	 </div>
+	 <div>
+	    <input class="form-check-input" type="checkbox" id="-u" name="-u" value="-u">
+ 	   <label class="form-check-label" for="-u">-u</label>
+ 	 </div>
+	 </div>
+	
+	 <div class="mb-3 mt-3">
+      <input type="text" class="form-control" id="-m" placeholder="Pattern" name="-m">
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="-n" placeholder="Length" name="-m">
+    </div>
+
 	<div>
 		<div id="args"></div>
 	</div>
 	<button type="submit">send</button>
 </form>
-<button id="add">Argl</button>
+<button id="add" type="button" class="btn btn-primary">Play with %</button>
 <script type="text/javascript" src="/static/js/fortune.js"></script>
 <script>
 	let e = [

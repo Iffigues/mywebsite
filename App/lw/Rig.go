@@ -11,25 +11,10 @@ import (
 )
 
 type RigStruct struct {
-	LastName string
-	FirstName string
-	Street string
-	Country string
+	Name string
+	Addr	string
 	Postal string
 	Tel string
-}
-
-
-func GetName(a string) (e string, ee string) {
-	fmt.Println(a)
-	a = strings.TrimSpace(a);
-	name := strings.Split(a, " ")
-	fmt.Println(name, len(name))
-	e = name[0]
-	if len(ee) > 1 {
-		ee = name[1]
-	}
-	return;
 }
 
 func MakeStr(e bytes.Buffer) (r []RigStruct) {
@@ -40,7 +25,11 @@ func MakeStr(e bytes.Buffer) (r []RigStruct) {
 		var ee RigStruct
 		v :=  strings.TrimSpace(val)
 		vv := strings.Split(v, "\n")
-		ee.FirstName, ee.LastName = GetName(vv[0])
+		ee.Name = vv[0]
+		ee.Addr = vv[1]
+		ee.Postal = vv[2]
+		ee.Tel = vv[3]
+		r = append(r, ee)
 	}
 	return
 }
@@ -64,11 +53,9 @@ func (a *Lw) Rig(e *types.Data) http.Handler {
 		a, _, c := e.Commande.Exec(rr)
 		if c != nil {
 		}
-		MakeStr(a);
+		eee := MakeStr(a);
 		head := tool.NewHeader(r, w, "gopiko-rig", e)
-		head.SetData(&Fortune{
-			Fortune:a.String(),
-		})
+		head.SetData(eee)
 		head.Jointure("layout.html", "rig.html")
 	})
 }
