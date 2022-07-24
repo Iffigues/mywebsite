@@ -1,4 +1,19 @@
-version: "3.9"  # optional since v1.27.0
+version: "3"
 services:
-  server:
+  client:
+    build: ./client
+    volumes:
+      - build-volume:/build
+  proto:
     build: ./protozoaire
+    volumes:
+      - proto-volume:/proto
+  goclient:
+    build: ./goclient
+    ports:
+      - "8080:8080"
+    volumes:
+      - build-volume:/build
+volumes:
+  build-volume:
+  proto-volume:

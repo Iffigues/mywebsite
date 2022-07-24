@@ -189,10 +189,8 @@ func (r *Commande) Think(re *http.Request) (a string) {
 func (r *Commande) MakeHaha(a string, re *http.Request) (b []Haha){
 	re.ParseForm()
 	tt := r.Co[a].Com
-	fmt.Println(a, " ==== ", re.Form)
 	for key, val := range re.Form{
 			if len(val[0]) > 0 {
-			fmt.Println("ez",key, val, len(val))
 			for _, vals := range tt {
 				if key == vals.A {
 					for _, ee := range val {
