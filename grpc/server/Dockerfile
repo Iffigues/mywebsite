@@ -16,7 +16,6 @@ RUN apt install -y protobuf-compiler
 RUN apt install -y golang-goprotobuf-dev
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-
 ADD ./server /server
 workdir /server
 

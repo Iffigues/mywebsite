@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 	"google.golang.org/grpc"
-	chat "github.com/Iffigues/mywebsite/grpc/protozoaire"
+	"github.com/Iffigues/protozoaire/chat"
 )
 
 func main() {
