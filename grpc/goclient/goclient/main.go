@@ -20,12 +20,12 @@ func main() {
 	webapp := http.FileServer(http.Dir("/build"))
 	r.Handle("/", Handler(webapp))
 	files, err := ioutil.ReadDir("/build")
-    	if err != nil {
-    	    fmt.Println(err)
-    	}
-    	for _, f := range files {
+	if err != nil {
+	    fmt.Println(err)
+	}
+	for _, f := range files {
             fmt.Println(f.Name())
-    	}
+	}
 	srv := &http.Server{
 		Handler:      r,
 		Addr:         ":8080",
