@@ -14,5 +14,9 @@ services:
     build: ./server
     ports:
       - "9000:9000"
+  gateway:
+    build: ./gateway
+    ports:
+      - "9090:9090"
 volumes:
   build-volume:

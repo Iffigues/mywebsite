@@ -13,7 +13,7 @@ func main() {
     r := mux.NewRouter()
 
     r.HandleFunc("/fortune", index).Methods("GET")
-    buildHandler := http.FileServer(http.Dir("build"))
+    buildHandler := http.FileServer(http.Dir("/build"))
     r.PathPrefix("/").Handler(buildHandler)
     srv := &http.Server{
         Handler:      r,

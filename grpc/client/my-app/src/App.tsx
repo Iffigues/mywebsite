@@ -32,6 +32,7 @@ function NotFound() {
 }
 
 function App() {
+  	
   const h1Ref = useRef<HTMLHeadingElement>(null)
    useLayoutEffect(() => {
 	if (h1Ref.current) {
@@ -39,7 +40,6 @@ function App() {
        		 h1Ref.current.style.width = "10%";
 		h1Ref.current.style.borderRadius = "15px 50px 30px";
 	}
-    console.log(h1Ref); // { current: <h1_object> }
   })  
 return (
     <div className="App">
